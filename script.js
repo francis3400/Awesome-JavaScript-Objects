@@ -33,9 +33,28 @@ function addBook(e) {
   if (title.value.length > 0 && author.value.length > 0) {
     e.preventDefault();
     booksArray.push(new Book(title.value, author.value));
+   
     title.value = '';
     author.value = '';
     showList();
     localStorage.setItem('books', JSON.stringify(booksArray));
   }
 }
+
+// function to remove a book
+
+function removeBook(e) {
+  if (!e.target.matches('.btn-remove')) return;
+  const { index } = e.target.dataset;
+  booksArray.splice(index, 1);
+  localStorage.setItem('books', JSON.stringify(booksArray));
+  showList();
+}
+
+// the real run
+
+btnAdd.addEventListener('click', addBook);
+
+showList();
+
+listSec.addEventListener('click', removeBook);
