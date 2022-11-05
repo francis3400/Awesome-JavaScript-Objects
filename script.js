@@ -33,7 +33,7 @@ function addBook(e) {
   if (title.value.length > 0 && author.value.length > 0) {
     e.preventDefault();
     booksArray.push(new Book(title.value, author.value));
-   
+
     title.value = '';
     author.value = '';
     showList();
@@ -57,4 +57,4 @@ btnAdd.addEventListener('click', addBook);
 
 showList();
 
-listSec.addEventListener('click', removeBook);
+listSec.addEventListener('click', removeBook);
